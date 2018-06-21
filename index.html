@@ -100,6 +100,20 @@
 
 <script>
   var checkboxes = Array.from( document.querySelectorAll( '[type="checkbox"]' ) );
+
+  function getChecked(e) {
+    var first = checkboxes.findIndex( check => check.checked === true );
+    if ( ( checkboxes.filter( checkbox => ( checkbox.checked ) ).length > 1 ) 
+      && ( e.shiftKey === true ) ) {
+        for ( let i = ( first + 1 ); i < checkboxes.length; i++ ) {
+          if ( !checkboxes[ i ].checked ) {
+            checkboxes[ i ].checked = true;
+          } else {
+            break;
+          }
+        }
+    }
+  }
 </script>
 </body>
 </html>
